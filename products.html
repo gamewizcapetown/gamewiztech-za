@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming Products — Gamewiztech ZA</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">Gamewiztech<span> ZA</span></a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a class="cart-icon" onclick="showCart()">&#128722; <span class="cart-count">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" style="padding: 3rem 0;">
+    <div class="container">
+      <h1>Gaming Products</h1>
+      <p>Premium gaming gear and accessories. Power up your setup.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Gaming PCs</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="product-img">&#128187;</div>
+          <h3>Nexus Pro Gaming PC</h3>
+          <p>RTX 5070 | Ryzen 7 9800X3D | 32GB DDR5 | 1TB NVMe</p>
+          <div class="price">$1,899</div>
+          <button class="btn" onclick="addToCart('gaming-pc-1','Nexus Pro Gaming PC',1899)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <div class="product-img">&#128187;</div>
+          <h3>Nexus Elite Gaming PC</h3>
+          <p>RTX 5090 | Ryzen 9 9950X | 64GB DDR5 | 2TB NVMe</p>
+          <div class="price">$3,499</div>
+          <button class="btn" onclick="addToCart('gaming-pc-2','Nexus Elite Gaming PC',3499)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <div class="product-img">&#128187;</div>
+          <h3>Nexus Lite Gaming PC</h3>
+          <p>RTX 4060 | Ryzen 5 7600 | 16GB DDR5 | 512GB NVMe</p>
+          <div class="price">$999</div>
+          <button class="btn" onclick="addToCart('gaming-pc-3','Nexus Lite Gaming PC',999)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: #f8f9fa;">
+    <div class="container">
+      <h2 class="section-title">Peripherals</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="product-img">&#127911;</div>
+          <h3>HyperSound X7 Headset</h3>
+          <p>7.1 Surround | Noise-Cancelling | Wireless | 40h Battery</p>
+          <div class="price">$149</div>
+          <button class="btn" onclick="addToCart('headset-1','HyperSound X7 Headset',149)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <div class="product-img">&#127911;</div>
+          <h3>HyperSound X5 Headset</h3>
+          <p>Stereo | Wired | RGB | Detachable Mic</p>
+          <div class="price">$79</div>
+          <button class="btn" onclick="addToCart('headset-2','HyperSound X5 Headset',79)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <div class="product-img">&#9000;</div>
+          <h3>Quantum Mechanical KB</h3>
+          <p>Hot-Swappable | Gateron Switches | RGB | Aluminum Frame</p>
+          <div class="price">$169</div>
+          <button class="btn" onclick="addToCart('keyboard-1','Quantum Mechanical KB',169)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <div class="product-img">&#9000;</div>
+          <h3>Strike TKL Keyboard</h3>
+          <p>Tenkeyless | Cherry MX Blue | RGB | PBT Keycaps</p>
+          <div class="price">$119</div>
+          <button class="btn" onclick="addToCart('keyboard-2','Strike TKL Keyboard',119)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <div class="product-img">&#128433;</div>
+          <h3>Viper X Mouse</h3>
+          <p>26K DPI | Wireless | 58g | 80h Battery</p>
+          <div class="price">$129</div>
+          <button class="btn" onclick="addToCart('mouse-1','Viper X Mouse',129)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <div class="product-img">&#128433;</div>
+          <h3>Storm X Mouse</h3>
+          <p>12K DPI | Wired | RGB | 6 Buttons</p>
+          <div class="price">$49</div>
+          <button class="btn" onclick="addToCart('mouse-2','Storm X Mouse',49)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Accessories</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="product-img">&#128196;</div>
+          <h3>Glacier XXL Mouse Pad</h3>
+          <p>900x400mm | Stitched Edges | Waterproof Base</p>
+          <div class="price">$39</div>
+          <button class="btn" onclick="addToCart('pad-1','Glacier XXL Mouse Pad',39)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <div class="product-img">&#128161;</div>
+          <h3>RGB Strip Kit</h3>
+          <p>2m | Addressable LEDs | App Control | Sync Ready</p>
+          <div class="price">$29</div>
+          <button class="btn" onclick="addToCart('rgb-1','RGB Strip Kit',29)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <div class="product-img">&#128188;</div>
+          <h3>Cable Management Kit</h3>
+          <p>Sleeved Cables | Velcro Ties | Cable Sleeves | Combs</p>
+          <div class="price">$34</div>
+          <button class="btn" onclick="addToCart('cable-1','Cable Management Kit',34)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Gamewiztech ZA. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div class="cart-overlay" id="cart-overlay" onclick="hideCart()"></div>
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-modal-header">
+      <h2>Shopping Cart</h2>
+      <button class="cart-modal-close" onclick="hideCart()">&times;</button>
+    </div>
+    <div id="cart-items-list"></div>
+    <div class="cart-total">Total: <span id="cart-total-price">$0.00</span></div>
+    <div class="cart-actions">
+      <button class="btn btn-outline" onclick="hideCart()">Continue Shopping</button>
+      <button class="btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <script src="js/cart.js"></script>
+</body>
+</html>

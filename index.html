@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gamewiztech ZA — IT Services & Gaming Products</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">Gamewiztech<span> ZA</span></a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a class="cart-icon" onclick="showCart()">&#128722; <span class="cart-count">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <img src="images/hero-banner.png" alt="Gamewiztech ZA Banner" style="max-width: 100%; height: auto; margin-bottom: 1.5rem; border-radius: 10px;">
+      <h1>IT Services & Gaming Gear</h1>
+      <p>Enterprise IT solutions for your business and premium gaming products for your setup.</p>
+      <a href="services.html" class="btn">Our Services</a>
+      <a href="products.html" class="btn btn-outline" style="margin-left: 1rem;">Shop Products</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Why Choose Us</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">&#9881;</div>
+          <h3>Managed IT</h3>
+          <p>24/7 monitoring, support, and infrastructure management for your business.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#127918;</div>
+          <h3>Gaming Products</h3>
+          <p>Curated gaming PCs, peripherals, and accessories at competitive prices.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#128274;</div>
+          <h3>Cybersecurity</h3>
+          <p>Protect your data with enterprise-grade security solutions and audits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: #f8f9fa;">
+    <div class="container">
+      <h2 class="section-title">Featured Products</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="product-img">&#128187;</div>
+          <h3>Nexus Pro Gaming PC</h3>
+          <p>RTX 5070, Ryzen 7, 32GB DDR5, 1TB NVMe</p>
+          <div class="price">$1,899</div>
+          <button class="btn" onclick="addToCart('gaming-pc-1','Nexus Pro Gaming PC',1899)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <div class="product-img">&#127911;</div>
+          <h3>HyperSound X7 Headset</h3>
+          <p>7.1 surround, noise-cancelling, wireless</p>
+          <div class="price">$149</div>
+          <button class="btn" onclick="addToCart('headset-1','HyperSound X7 Headset',149)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <div class="product-img">&#9000;</div>
+          <h3>Quantum Mechanical KB</h3>
+          <p>Hot-swappable switches, RGB, aluminum frame</p>
+          <div class="price">$169</div>
+          <button class="btn" onclick="addToCart('keyboard-1','Quantum Mechanical KB',169)">Add to Cart</button>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="products.html" class="btn">View All Products</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">What Our Clients Say</h2>
+      <div class="grid">
+        <div class="card">
+          <p>"Gamewiztech ZA transformed our IT infrastructure. Uptime went from 97% to 99.9%."</p>
+          <p style="margin-top: 1rem; font-weight: 600;">— Sarah Chen, CTO at FinCore</p>
+        </div>
+        <div class="card">
+          <p>"Bought my gaming rig from them. Best price-to-performance I've ever seen."</p>
+          <p style="margin-top: 1rem; font-weight: 600;">— Mike Torres, Pro Gamer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Gamewiztech ZA. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div class="cart-overlay" id="cart-overlay" onclick="hideCart()"></div>
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-modal-header">
+      <h2>Shopping Cart</h2>
+      <button class="cart-modal-close" onclick="hideCart()">&times;</button>
+    </div>
+    <div id="cart-items-list"></div>
+    <div class="cart-total">Total: <span id="cart-total-price">$0.00</span></div>
+    <div class="cart-actions">
+      <button class="btn btn-outline" onclick="hideCart()">Continue Shopping</button>
+      <button class="btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <script src="js/cart.js"></script>
+</body>
+</html>

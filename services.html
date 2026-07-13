@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Services — Gamewiztech ZA</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">Gamewiztech<span> ZA</span></a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a class="cart-icon" onclick="showCart()">&#128722; <span class="cart-count">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" style="padding: 3rem 0;">
+    <div class="container">
+      <h1>IT Services</h1>
+      <p>Enterprise-grade technology solutions tailored to your business.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">&#9881;</div>
+          <h3>Managed IT Services</h3>
+          <p>Proactive monitoring, maintenance, and support for your entire IT infrastructure. 24/7 help desk included.</p>
+          <p class="price">From $499/mo</p>
+          <a href="contact.html" class="btn">Get Started</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#9729;</div>
+          <h3>Cloud Solutions</h3>
+          <p>Migration, architecture, and management on AWS, Azure, and GCP. Scalable infrastructure design.</p>
+          <p class="price">From $299/mo</p>
+          <a href="contact.html" class="btn">Get Started</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#128274;</div>
+          <h3>Cybersecurity</h3>
+          <p>Vulnerability assessments, penetration testing, compliance auditing, and ongoing security monitoring.</p>
+          <p class="price">From $799/mo</p>
+          <a href="contact.html" class="btn">Get Started</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#128736;</div>
+          <h3>Hardware Setup</h3>
+          <p>Workstation configuration, server deployment, network infrastructure setup and cabling.</p>
+          <p class="price">From $149</p>
+          <a href="contact.html" class="btn">Get Quote</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#128230;</div>
+          <h3>Data Backup & Recovery</h3>
+          <p>Automated backups, disaster recovery planning, and business continuity solutions.</p>
+          <p class="price">From $199/mo</p>
+          <a href="contact.html" class="btn">Get Started</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#128187;</div>
+          <h3>IT Consulting</h3>
+          <p>Technology strategy, digital transformation, architecture reviews, and vendor selection.</p>
+          <p class="price">From $200/hr</p>
+          <a href="contact.html" class="btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Gamewiztech ZA. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div class="cart-overlay" id="cart-overlay" onclick="hideCart()"></div>
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-modal-header">
+      <h2>Shopping Cart</h2>
+      <button class="cart-modal-close" onclick="hideCart()">&times;</button>
+    </div>
+    <div id="cart-items-list"></div>
+    <div class="cart-total">Total: <span id="cart-total-price">$0.00</span></div>
+    <div class="cart-actions">
+      <button class="btn btn-outline" onclick="hideCart()">Continue Shopping</button>
+      <button class="btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <script src="js/cart.js"></script>
+</body>
+</html>
