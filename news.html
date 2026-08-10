@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IT Services — Gamewiztech ZA</title>
+  <title>Tech News — Gamewiztech ZA</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -14,7 +14,7 @@
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
         <a href="products.html">Products</a>
-        <a href="news.html">News</a>
+        <a href="news.html" class="active">News</a>
         <a href="contact.html">Contact</a>
         <a class="cart-icon" onclick="showCart()">&#128722; <span class="cart-count">0</span></a>
       </nav>
@@ -23,56 +23,23 @@
 
   <section class="hero" style="padding: 3rem 0;">
     <div class="container">
-      <h1>IT Services</h1>
-      <p>Reliable IT solutions for Cape Town businesses.</p>
+      <h1>Tech News</h1>
+      <p>Stay up to date with the latest in gaming, AI, Linux, and hardware.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="grid">
-        <div class="card">
-          <div class="card-icon">&#9881;</div>
-          <h3>Managed IT Services</h3>
-          <p>24/7 proactive monitoring, remote & on-site support, patch management, hardware lifecycle management, and dedicated help desk with 15-minute response time SLA. Includes quarterly IT audits and monthly performance reports.</p>
-          <p class="price">From R2,499/mo <span class="usd-price">(~$153/mo)</span></p>
-          <a href="contact.html" class="btn">Get Started</a>
-        </div>
-        <div class="card">
-          <div class="card-icon">&#9729;</div>
-          <h3>Cloud Setup & Migration</h3>
-          <p>Seamless migration to Microsoft 365 or Google Workspace including email, calendar, contacts, and file transfer with zero downtime. Includes cloud storage setup, identity management (Azure AD / SSO), and staff training.</p>
-          <p class="price">From R899/mo <span class="usd-price">(~$55/mo)</span></p>
-          <a href="contact.html" class="btn">Get Started</a>
-        </div>
-        <div class="card">
-          <div class="card-icon">&#128274;</div>
-          <h3>Cybersecurity</h3>
-          <p>Enterprise-grade endpoint protection, next-gen firewall configuration, real-time threat detection, simulated phishing campaigns with staff training, vulnerability assessments, and annual POPIA compliance audits.</p>
-          <p class="price">From R1,499/mo <span class="usd-price">(~$92/mo)</span></p>
-          <a href="contact.html" class="btn">Get Started</a>
-        </div>
-        <div class="card">
-          <div class="card-icon">&#127760;</div>
-          <h3>Networking</h3>
-          <p>WiFi installation, switch configuration, VPN setup, structured cabling, and network troubleshooting.</p>
-          <p class="price">From R1,199 <span class="usd-price">(~$73)</span></p>
-          <a href="contact.html" class="btn">Get Quote</a>
-        </div>
-        <div class="card">
-          <div class="card-icon">&#128230;</div>
-          <h3>Data Backup & Recovery</h3>
-          <p>Automated cloud backups, disaster recovery planning, ransomware protection, and business continuity.</p>
-          <p class="price">From R799/mo <span class="usd-price">(~$49/mo)</span></p>
-          <a href="contact.html" class="btn">Get Started</a>
-        </div>
-        <div class="card">
-          <div class="card-icon">&#127754;</div>
-          <h3>Website Hosting & Maintenance</h3>
-          <p>Fast reliable hosting, domain management, SSL certificates, security updates, weekly backups, and 24/7 uptime monitoring.</p>
-          <p class="price">From R249/mo <span class="usd-price">(~$15/mo)</span></p>
-          <a href="contact.html" class="btn">Get Started</a>
-        </div>
+      <div class="news-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="gaming">Gaming</button>
+        <button class="filter-btn" data-filter="ai">AI</button>
+        <button class="filter-btn" data-filter="linux">Linux</button>
+        <button class="filter-btn" data-filter="hardware">Hardware</button>
+      </div>
+
+      <div class="news-grid" id="newsGrid">
+        <div class="news-loading">Loading tech news...</div>
       </div>
     </div>
   </section>
@@ -105,6 +72,7 @@
   </div>
 
   <script src="js/cart.js"></script>
+  <script src="js/news.js"></script>
   <script src="js/whatsapp.js"></script>
   <a class="whatsapp-float" href="https://wa.me/27638305734" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">

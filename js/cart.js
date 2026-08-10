@@ -1,3 +1,4 @@
+const ZAR_TO_USD = 16.36;
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 function saveCart() {
@@ -46,6 +47,10 @@ function getTotal() {
   return cart.reduce((sum, item) => sum + item.price * item.qty, 0).toFixed(2);
 }
 
+function getTotalUSD() {
+  return (parseFloat(getTotal()) / ZAR_TO_USD).toFixed(2);
+}
+
 function renderCartModal() {
   const list = document.getElementById('cart-items-list');
   const totalEl = document.getElementById('cart-total-price');
@@ -53,7 +58,7 @@ function renderCartModal() {
 
   if (cart.length === 0) {
     list.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
-    totalEl.textContent = '$0.00';
+    totalEl.textContent = 'R0.00';
     return;
   }
 
@@ -62,7 +67,7 @@ function renderCartModal() {
       <div class="cart-item-info">
         <div>
           <div class="cart-item-name">${item.name}</div>
-          <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+          <div class="cart-item-price">R${item.price.toFixed(2)} <span class="usd-price">(~$${(item.price / ZAR_TO_USD).toFixed(2)})</span></div>
         </div>
       </div>
       <div class="cart-item-qty">
@@ -74,7 +79,7 @@ function renderCartModal() {
     </div>
   `).join('');
 
-  totalEl.textContent = `$${getTotal()}`;
+    totalEl.textContent = `R${getTotal()} (~$${getTotalUSD()})`;
 }
 
 function showCart() {
@@ -90,12 +95,11 @@ function hideCart() {
 
 function checkout() {
   if (cart.length === 0) return;
-  // Build a Stripe Payment Link or Paypal link with cart items
-  // For now, redirect to a contact/checkout page
   const items = cart.map(i => `${i.name} x${i.qty}`).join(', ');
   const total = getTotal();
+  const totalUSD = getTotalUSD();
   hideCart();
-  window.location.href = `contact.html?order=${encodeURIComponent(items)}&total=${total}`;
+  window.location.href = `contact.html?order=${encodeURIComponent(items)}&total=R${total} (~$${totalUSD})`;
 }
 
 document.addEventListener('DOMContentLoaded', updateCartUI);
