@@ -196,6 +196,18 @@ nav a:hover {
   margin-bottom: 1rem;
 }
 
+.price-range {
+  font-size: 0.8rem !important;
+  color: #888 !important;
+  margin-bottom: 1rem !important;
+}
+
+.usd-price {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #888;
+}
+
 .card .btn {
   font-size: 0.9rem;
   padding: 0.6rem 1.5rem;
