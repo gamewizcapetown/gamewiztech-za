@@ -142,6 +142,15 @@ nav a:hover {
   background: #e94560;
 }
 
+.btn-blue {
+  background: #4169E1;
+  color: #fff;
+}
+
+.btn-blue:hover {
+  background: #3457D5;
+}
+
 /* Sections */
 .section {
   padding: 4rem 0;
