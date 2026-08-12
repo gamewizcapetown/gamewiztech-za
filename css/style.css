@@ -143,11 +143,20 @@ nav a:hover {
 }
 
 .btn-blue {
-  background: #0ABFAC;
+  background: #4169E1;
   color: #fff;
 }
 
 .btn-blue:hover {
+  background: #3457D5;
+}
+
+.btn-teal {
+  background: #0ABFAC;
+  color: #fff;
+}
+
+.btn-teal:hover {
   background: #08A391;
 }
 
