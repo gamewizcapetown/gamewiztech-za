@@ -733,6 +733,51 @@ footer {
   opacity: 1;
 }
 
+/* Email Floating Button */
+.email-float {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background: #E94560;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(233, 69, 96, 0.4);
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.email-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
+}
+.email-float svg {
+  width: 32px;
+  height: 32px;
+}
+.email-tooltip {
+  position: absolute;
+  left: 70px;
+  background: #fff;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.email-float:hover .email-tooltip {
+  opacity: 1;
+}
+
 @media (max-width: 768px) {
   header .container {
     flex-direction: column;
