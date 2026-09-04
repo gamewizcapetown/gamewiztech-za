@@ -20,6 +20,7 @@
         <a href="contact.html">Contact</a>
         <a href="rankings.html">Rankings</a>
         <a class="cart-icon" onclick="showCart()">&#128722; <span class="cart-count">0</span></a>
+        <button id="darkToggle" class="dark-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">&#127769;</button>
       </nav>
     </div>
   </header>
@@ -107,6 +108,7 @@
 
   <script src="js/cart.js"></script>
   <script src="js/whatsapp.js"></script>
+  <script src="js/darkmode.js"></script>
   <script>
     // Pre-fill form if coming from checkout
     const params = new URLSearchParams(window.location.search);
