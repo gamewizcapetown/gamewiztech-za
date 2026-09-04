@@ -27,7 +27,7 @@
   <section class="hero" style="padding: 3rem 0;">
     <div class="container">
       <h1>Hardware Rankings</h1>
-      <p>Up-to-date GPU and CPU rankings to help you pick the right hardware for your build.</p>
+      <p>The 50 best GPUs and 50 best CPUs ranked for gaming and productivity.</p>
     </div>
   </section>
 
@@ -40,7 +40,7 @@
 
       <!-- GPU Rankings -->
       <div id="tab-gpu" class="rank-panel">
-        <h2 class="section-title">Best Graphics Cards 2026</h2>
+        <h2 class="section-title">Best Graphics Cards 2026 (Top 50)</h2>
         <div class="rank-table-wrap">
           <table class="rank-table">
             <thead>
@@ -52,31 +52,15 @@
                 <th>Tier</th>
               </tr>
             </thead>
-            <tbody>
-              <tr><td>1</td><td>NVIDIA GeForce RTX 5090</td><td>32GB GDDR7</td><td>~2.4 GHz</td><td><span class="tier tier-top">Flagship</span></td></tr>
-              <tr><td>2</td><td>NVIDIA GeForce RTX 5080</td><td>16GB GDDR7</td><td>~2.6 GHz</td><td><span class="tier tier-top">High-End</span></td></tr>
-              <tr><td>3</td><td>AMD Radeon RX 9070 XT</td><td>16GB GDDR6</td><td>~2.4 GHz</td><td><span class="tier tier-top">High-End</span></td></tr>
-              <tr><td>4</td><td>NVIDIA GeForce RTX 5070 Ti</td><td>16GB GDDR7</td><td>~2.6 GHz</td><td><span class="tier tier-good">Enthusiast</span></td></tr>
-              <tr><td>5</td><td>AMD Radeon RX 9070</td><td>16GB GDDR6</td><td>~2.4 GHz</td><td><span class="tier tier-good">Enthusiast</span></td></tr>
-              <tr><td>6</td><td>NVIDIA GeForce RTX 5070</td><td>12GB GDDR7</td><td>~2.5 GHz</td><td><span class="tier tier-good">Performance</span></td></tr>
-              <tr><td>7</td><td>NVIDIA GeForce RTX 5060 Ti (16GB)</td><td>16GB GDDR7</td><td>~2.5 GHz</td><td><span class="tier tier-good">Performance</span></td></tr>
-              <tr><td>8</td><td>AMD Radeon RX 9060 XT</td><td>16GB GDDR6</td><td>~2.5 GHz</td><td><span class="tier tier-good">Performance</span></td></tr>
-              <tr><td>9</td><td>NVIDIA GeForce RTX 5060</td><td>8GB GDDR7</td><td>~2.5 GHz</td><td><span class="tier tier-mid">Mid-Range</span></td></tr>
-              <tr><td>10</td><td>Intel Arc B580</td><td>12GB GDDR6</td><td>2.67 GHz</td><td><span class="tier tier-mid">Mid-Range</span></td></tr>
-              <tr><td>11</td><td>AMD Radeon RX 9060</td><td>8GB GDDR6</td><td>~2.4 GHz</td><td><span class="tier tier-mid">Mid-Range</span></td></tr>
-              <tr><td>12</td><td>Intel Arc B570</td><td>10GB GDDR6</td><td>2.5 GHz</td><td><span class="tier tier-mid">Mid-Range</span></td></tr>
-              <tr><td>13</td><td>NVIDIA GeForce RTX 4060</td><td>8GB GDDR6</td><td>2.48 GHz</td><td><span class="tier tier-budget">Budget</span></td></tr>
-              <tr><td>14</td><td>AMD Radeon RX 7600</td><td>8GB GDDR6</td><td>2.66 GHz</td><td><span class="tier tier-budget">Budget</span></td></tr>
-              <tr><td>15</td><td>Intel Arc B380</td><td>8GB GDDR6</td><td>2.45 GHz</td><td><span class="tier tier-budget">Budget</span></td></tr>
-            </tbody>
+            <tbody id="gpu-tbody"></tbody>
           </table>
         </div>
-        <p class="rank-note">Rankings based on 1080p/1440p gaming performance and value. Note: The Intel Arc B580 (rank 10) powers our in-stock <a href="products.html">Nexus Lite Gaming PC</a>.</p>
+        <p class="rank-note">Rankings based on 1080p/1440p/4K gaming performance, ray tracing, and value. The Intel Arc B580 (rank 10) powers our in-stock <a href="products.html">Nexus Lite Gaming PC</a>.</p>
       </div>
 
       <!-- CPU Rankings -->
       <div id="tab-cpu" class="rank-panel" style="display:none;">
-        <h2 class="section-title">Best CPUs 2026</h2>
+        <h2 class="section-title">Best CPUs 2026 (Top 50)</h2>
         <div class="rank-table-wrap">
           <table class="rank-table">
             <thead>
@@ -88,23 +72,7 @@
                 <th>Tier</th>
               </tr>
             </thead>
-            <tbody>
-              <tr><td>1</td><td>AMD Ryzen 9 9950X3D</td><td>16C / 32T</td><td>~5.7 GHz boost</td><td><span class="tier tier-top">Flagship</span></td></tr>
-              <tr><td>2</td><td>AMD Ryzen 9 9900X3D</td><td>12C / 24T</td><td>~5.5 GHz boost</td><td><span class="tier tier-top">High-End</span></td></tr>
-              <tr><td>3</td><td>Intel Core Ultra 9 285K</td><td>24C / 24T</td><td>~5.7 GHz boost</td><td><span class="tier tier-top">High-End</span></td></tr>
-              <tr><td>4</td><td>AMD Ryzen 7 9800X3D</td><td>8C / 16T</td><td>~5.2 GHz boost</td><td><span class="tier tier-good">Enthusiast</span></td></tr>
-              <tr><td>5</td><td>AMD Ryzen 9 9850X</td><td>16C / 32T</td><td>~5.5 GHz boost</td><td><span class="tier tier-good">Enthusiast</span></td></tr>
-              <tr><td>6</td><td>Intel Core Ultra 7 265K</td><td>20C / 20T</td><td>~5.5 GHz boost</td><td><span class="tier tier-good">Performance</span></td></tr>
-              <tr><td>7</td><td>AMD Ryzen 7 9700X</td><td>8C / 16T</td><td>~5.5 GHz boost</td><td><span class="tier tier-good">Performance</span></td></tr>
-              <tr><td>8</td><td>AMD Ryzen 5 9600X</td><td>6C / 12T</td><td>~5.4 GHz boost</td><td><span class="tier tier-good">Mainstream</span></td></tr>
-              <tr><td>9</td><td>Intel Core Ultra 5 245K</td><td>14C / 14T</td><td>~5.2 GHz boost</td><td><span class="tier tier-mid">Mainstream</span></td></tr>
-              <tr><td>10</td><td>AMD Ryzen 5 8500G</td><td>6C / 12T</td><td>~5.0 GHz boost</td><td><span class="tier tier-mid">APU</span></td></tr>
-              <tr><td>11</td><td>Intel Core i5-14400F</td><td>10C / 16T</td><td>4.7 GHz boost</td><td><span class="tier tier-mid">Value</span></td></tr>
-              <tr><td>12</td><td>AMD Ryzen 5 7500F</td><td>6C / 12T</td><td>~5.0 GHz boost</td><td><span class="tier tier-mid">Value</span></td></tr>
-              <tr><td>13</td><td>Intel Core i3-14100F</td><td>4C / 8T</td><td>4.7 GHz boost</td><td><span class="tier tier-budget">Budget</span></td></tr>
-              <tr><td>14</td><td>AMD Ryzen 3 8300G</td><td>4C / 8T</td><td>~4.9 GHz boost</td><td><span class="tier tier-budget">Budget APU</span></td></tr>
-              <tr><td>15</td><td>Intel Core i3-13100F</td><td>4C / 8T</td><td>4.5 GHz boost</td><td><span class="tier tier-budget">Budget</span></td></tr>
-            </tbody>
+            <tbody id="cpu-tbody"></tbody>
           </table>
         </div>
         <p class="rank-note">Rankings based on gaming and productivity performance, efficiency, and value. The Xeon E5 2680 v4 in our <a href="products.html">Nexus Lite Gaming PC</a> is a powerful multi-core workstation chip from the server segment.</p>
@@ -143,6 +111,146 @@
   <script src="js/cart.js"></script>
   <script src="js/whatsapp.js"></script>
   <script>
+    // GPU rankings: [name, vram, speed]
+    var gpuList = [
+      ["NVIDIA GeForce RTX 5090", "32GB GDDR7", "~2.40 GHz"],
+      ["NVIDIA GeForce RTX 5080", "16GB GDDR7", "~2.62 GHz"],
+      ["AMD Radeon RX 9070 XT", "16GB GDDR6", "~2.40 GHz"],
+      ["NVIDIA GeForce RTX 5070 Ti", "16GB GDDR7", "~2.60 GHz"],
+      ["AMD Radeon RX 9070", "16GB GDDR6", "~2.40 GHz"],
+      ["NVIDIA GeForce RTX 4090", "24GB GDDR6X", "2.52 GHz"],
+      ["NVIDIA GeForce RTX 5070", "12GB GDDR7", "~2.50 GHz"],
+      ["NVIDIA GeForce RTX 5060 Ti (16GB)", "16GB GDDR7", "~2.50 GHz"],
+      ["AMD Radeon RX 9060 XT", "16GB GDDR6", "~2.50 GHz"],
+      ["NVIDIA GeForce RTX 5060", "8GB GDDR7", "~2.50 GHz"],
+      ["Intel Arc B580", "12GB GDDR6", "2.67 GHz"],
+      ["AMD Radeon RX 7900 XTX", "24GB GDDR6", "2.50 GHz"],
+      ["AMD Radeon RX 9060", "8GB GDDR6", "~2.40 GHz"],
+      ["NVIDIA GeForce RTX 4080 Super", "16GB GDDR6X", "2.55 GHz"],
+      ["AMD Radeon RX 7900 XT", "20GB GDDR6", "2.40 GHz"],
+      ["Intel Arc B570", "10GB GDDR6", "2.50 GHz"],
+      ["NVIDIA GeForce RTX 4070 Ti Super", "16GB GDDR6X", "2.61 GHz"],
+      ["NVIDIA GeForce RTX 4070 Super", "12GB GDDR6X", "2.48 GHz"],
+      ["AMD Radeon RX 7800 XT", "16GB GDDR6", "2.43 GHz"],
+      ["AMD Radeon RX 7700 XT", "12GB GDDR6", "2.54 GHz"],
+      ["NVIDIA GeForce RTX 3060 Ti", "8GB GDDR6X", "1.67 GHz"],
+      ["NVIDIA GeForce RTX 4060 Ti", "8GB GDDR6", "2.54 GHz"],
+      ["NVIDIA GeForce RTX 4060", "8GB GDDR6", "2.48 GHz"],
+      ["AMD Radeon RX 7600 XT", "16GB GDDR6", "2.76 GHz"],
+      ["AMD Radeon RX 7600", "8GB GDDR6", "2.66 GHz"],
+      ["NVIDIA GeForce RTX 3060", "12GB GDDR6", "1.78 GHz"],
+      ["NVIDIA GeForce RTX 3050", "8GB GDDR6", "1.78 GHz"],
+      ["AMD Radeon RX 6750 XT", "12GB GDDR6", "2.61 GHz"],
+      ["Intel Arc B380", "8GB GDDR6", "2.45 GHz"],
+      ["AMD Radeon RX 6650 XT", "8GB GDDR6", "2.63 GHz"],
+      ["NVIDIA GeForce RTX 2060", "6GB GDDR6", "1.68 GHz"],
+      ["AMD Radeon RX 6600 XT", "8GB GDDR6", "2.59 GHz"],
+      ["NVIDIA GeForce GTX 1660 Super", "6GB GDDR6", "1.78 GHz"],
+      ["AMD Radeon RX 6600", "8GB GDDR6", "2.49 GHz"],
+      ["NVIDIA GeForce GTX 1660 Ti", "6GB GDDR6", "1.77 GHz"],
+      ["NVIDIA GeForce GTX 1650 Super", "4GB GDDR6", "1.73 GHz"],
+      ["AMD Radeon RX 6500 XT", "4GB GDDR6", "2.82 GHz"],
+      ["NVIDIA GeForce GTX 1650", "4GB GDDR5", "1.67 GHz"],
+      ["AMD Radeon RX 6400", "4GB GDDR6", "2.32 GHz"],
+      ["AMD Radeon RX 5700 XT", "8GB GDDR6", "1.91 GHz"],
+      ["NVIDIA GeForce GTX 1070", "8GB GDDR5", "1.68 GHz"],
+      ["AMD Radeon RX 5600 XT", "6GB GDDR6", "1.56 GHz"],
+      ["NVIDIA GeForce GTX 1060 (6GB)", "6GB GDDR5", "1.71 GHz"],
+      ["NVIDIA GeForce GTX 980 Ti", "6GB GDDR5", "1.19 GHz"],
+      ["AMD Radeon RX 580", "8GB GDDR5", "1.37 GHz"],
+      ["NVIDIA GeForce GTX 1050 Ti", "4GB GDDR5", "1.39 GHz"],
+      ["AMD Radeon RX 570", "8GB GDDR5", "1.24 GHz"],
+      ["NVIDIA GeForce GTX 960", "4GB GDDR5", "1.26 GHz"],
+      ["NVIDIA GeForce GT 1030", "2GB GDDR5", "1.47 GHz"],
+      ["AMD Radeon R7 360", "2GB GDDR5", "1.05 GHz"]
+    ];
+
+    // CPU rankings: [name, cores, speed]
+    var cpuList = [
+      ["AMD Ryzen 9 9950X3D", "16C / 32T", "5.7 GHz boost"],
+      ["AMD Ryzen 9 9900X3D", "12C / 24T", "5.5 GHz boost"],
+      ["Intel Core Ultra 9 285K", "24C / 24T", "5.7 GHz boost"],
+      ["AMD Ryzen 7 9800X3D", "8C / 16T", "5.2 GHz boost"],
+      ["AMD Ryzen 9 9850X", "16C / 32T", "5.5 GHz boost"],
+      ["Intel Core Ultra 7 265K", "20C / 20T", "5.5 GHz boost"],
+      ["AMD Ryzen 9 9950X", "16C / 32T", "5.7 GHz boost"],
+      ["AMD Ryzen 7 9700X", "8C / 16T", "5.5 GHz boost"],
+      ["Intel Core Ultra 9 285KX", "24C / 24T", "5.7 GHz boost"],
+      ["AMD Ryzen 9 9900X", "12C / 24T", "5.6 GHz boost"],
+      ["AMD Ryzen 7 7800X3D", "8C / 16T", "5.0 GHz boost"],
+      ["Intel Core Ultra 9 275K", "24C / 28T", "5.7 GHz boost"],
+      ["AMD Ryzen 5 9600X", "6C / 12T", "5.4 GHz boost"],
+      ["Intel Core Ultra 7 265KX", "20C / 20T", "5.5 GHz boost"],
+      ["AMD Ryzen 7 7700X", "8C / 16T", "5.4 GHz boost"],
+      ["Intel Core Ultra 8 255K", "20C / 20T", "5.4 GHz boost"],
+      ["AMD Ryzen 7 5800X3D", "8C / 16T", "4.5 GHz boost"],
+      ["Intel Core Ultra 5 245K", "14C / 14T", "5.2 GHz boost"],
+      ["AMD Ryzen 9 7950X", "16C / 32T", "5.7 GHz boost"],
+      ["Intel Core Ultra 7 265KF", "20C / 20T", "5.5 GHz boost"],
+      ["Intel Core i9-14900K", "24C / 32T", "6.0 GHz boost"],
+      ["AMD Ryzen 5 7600X", "6C / 12T", "5.3 GHz boost"],
+      ["Intel Core Ultra 5 245KF", "14C / 14T", "5.2 GHz boost"],
+      ["AMD Ryzen 5 8500G", "6C / 12T", "5.0 GHz boost"],
+      ["Intel Core i7-14700K", "20C / 28T", "5.6 GHz boost"],
+      ["AMD Ryzen 7 8700X", "8C / 16T", "5.1 GHz boost"],
+      ["Intel Core i5-14600K", "14C / 20T", "5.3 GHz boost"],
+      ["AMD Ryzen 5 5600X", "6C / 12T", "4.6 GHz boost"],
+      ["Intel Core i5-14400F", "10C / 16T", "4.7 GHz boost"],
+      ["AMD Ryzen 5 7500F", "6C / 12T", "5.0 GHz boost"],
+      ["Intel Core i7-12700K", "12C / 20T", "5.0 GHz boost"],
+      ["AMD Ryzen 5 7600", "6C / 12T", "5.1 GHz boost"],
+      ["Intel Core i5-13600K", "14C / 20T", "5.1 GHz boost"],
+      ["AMD Ryzen 7 5700X", "8C / 16T", "4.6 GHz boost"],
+      ["Intel Core i5-12400F", "6C / 12T", "4.4 GHz boost"],
+      ["AMD Ryzen 5 5600", "6C / 12T", "4.4 GHz boost"],
+      ["Intel Core i3-14100F", "4C / 8T", "4.7 GHz boost"],
+      ["AMD Ryzen 5 5500", "6C / 12T", "4.2 GHz boost"],
+      ["Intel Core i5-11400F", "6C / 12T", "4.4 GHz boost"],
+      ["AMD Ryzen 3 8300G", "4C / 8T", "4.9 GHz boost"],
+      ["Intel Core i3-13100F", "4C / 8T", "4.5 GHz boost"],
+      ["AMD Ryzen 5 3600", "6C / 12T", "4.2 GHz boost"],
+      ["Intel Core i5-10400F", "6C / 12T", "4.3 GHz boost"],
+      ["AMD Ryzen 3 3100", "4C / 8T", "3.9 GHz boost"],
+      ["Intel Core i3-10100F", "4C / 8T", "4.3 GHz boost"],
+      ["AMD Ryzen 5 2600", "6C / 12T", "3.9 GHz boost"],
+      ["Intel Core i5-9400F", "6C / 6T", "4.1 GHz boost"],
+      ["AMD Ryzen 3 1300X", "4C / 4T", "3.7 GHz boost"],
+      ["Intel Core i3-8100", "4C / 4T", "3.6 GHz boost"],
+      ["AMD Ryzen 3 1200", "4C / 4T", "3.4 GHz boost"]
+    ];
+
+    function gpuTier(i) {
+      if (i < 2) return ["tier-top", "Flagship"];
+      if (i < 6) return ["tier-good", "High-End"];
+      if (i < 12) return ["tier-good", "Enthusiast"];
+      if (i < 22) return ["tier-good", "Performance"];
+      if (i < 34) return ["tier-mid", "Mid-Range"];
+      return ["tier-budget", "Budget"];
+    }
+
+    function cpuTier(i) {
+      if (i < 2) return ["tier-top", "Flagship"];
+      if (i < 8) return ["tier-top", "High-End"];
+      if (i < 14) return ["tier-good", "Enthusiast"];
+      if (i < 26) return ["tier-good", "Performance"];
+      if (i < 36) return ["tier-mid", "Mainstream"];
+      return ["tier-budget", "Budget"];
+    }
+
+    function renderTable(tbodyId, list, tierFn, col2Header) {
+      var tbody = document.getElementById(tbodyId);
+      var html = "";
+      for (var i = 0; i < list.length; i++) {
+        var t = tierFn(i);
+        html += '<tr><td>' + (i + 1) + '</td><td>' + list[i][0] + '</td><td>' + list[i][1] +
+          '</td><td>' + list[i][2] + '</td><td><span class="tier ' + t[0] + '">' + t[1] + '</span></td></tr>';
+      }
+      tbody.innerHTML = html;
+    }
+
+    renderTable("gpu-tbody", gpuList, gpuTier);
+    renderTable("cpu-tbody", cpuList, cpuTier);
+
     // Tab switching between GPU and CPU rankings
     document.querySelectorAll('.rank-tabs .filter-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
