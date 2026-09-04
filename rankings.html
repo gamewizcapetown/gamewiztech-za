@@ -50,6 +50,7 @@
                 <th>GPU</th>
                 <th>VRAM</th>
                 <th>Speed</th>
+                <th>GPU Rating</th>
                 <th>Tier</th>
               </tr>
             </thead>
@@ -70,6 +71,7 @@
                 <th>CPU</th>
                 <th>Cores / Threads</th>
                 <th>Speed</th>
+                <th>CPU Rating</th>
                 <th>Tier</th>
               </tr>
             </thead>
@@ -401,6 +403,60 @@
       "AMD Ryzen 3 1200": ["3.1 GHz", "65 W", "2017", "AM4"]
     };
 
+    // CPU rating (performance score out of 100) for the rankings table
+    var cpuRating = {
+      "AMD Ryzen 9 9950X3D": 100,
+      "AMD Ryzen 9 9900X3D": 94,
+      "Intel Core Ultra 9 285K": 95,
+      "AMD Ryzen 7 9800X3D": 92,
+      "AMD Ryzen 9 9850X": 93,
+      "Intel Core Ultra 7 265K": 89,
+      "AMD Ryzen 9 9950X": 91,
+      "AMD Ryzen 7 9700X": 87,
+      "Intel Core Ultra 9 285KX": 96,
+      "AMD Ryzen 9 9900X": 84,
+      "AMD Ryzen 7 7800X3D": 85,
+      "Intel Core Ultra 9 275K": 90,
+      "AMD Ryzen 5 9600X": 80,
+      "Intel Core Ultra 7 265KX": 88,
+      "AMD Ryzen 7 7700X": 78,
+      "Intel Core Ultra 8 255K": 86,
+      "AMD Ryzen 7 5800X3D": 72,
+      "Intel Core Ultra 5 245K": 79,
+      "AMD Ryzen 9 7950X": 82,
+      "Intel Core Ultra 7 265KF": 87,
+      "Intel Core i9-14900K": 83,
+      "AMD Ryzen 5 7600X": 74,
+      "Intel Core Ultra 5 245KF": 78,
+      "AMD Ryzen 5 8500G": 68,
+      "Intel Core i7-14700K": 75,
+      "AMD Ryzen 7 8700X": 71,
+      "Intel Core i5-14600K": 70,
+      "AMD Ryzen 5 5600X": 62,
+      "Intel Core i5-14400F": 60,
+      "AMD Ryzen 5 7500F": 66,
+      "Intel Core i7-12700K": 65,
+      "AMD Ryzen 5 7600": 64,
+      "Intel Core i5-13600K": 67,
+      "AMD Ryzen 7 5700X": 58,
+      "Intel Core i5-12400F": 55,
+      "AMD Ryzen 5 5600": 55,
+      "Intel Core i3-14100F": 50,
+      "AMD Ryzen 5 5500": 50,
+      "Intel Core i5-11400F": 46,
+      "AMD Ryzen 3 8300G": 50,
+      "Intel Core i3-13100F": 42,
+      "AMD Ryzen 5 3600": 40,
+      "Intel Core i5-10400F": 38,
+      "AMD Ryzen 3 3100": 36,
+      "Intel Core i3-10100F": 35,
+      "AMD Ryzen 5 2600": 32,
+      "Intel Core i5-9400F": 33,
+      "AMD Ryzen 3 1300X": 25,
+      "Intel Core i3-8100": 24,
+      "AMD Ryzen 3 1200": 22
+    };
+
     function gpuTier(i) {
       if (i < 2) return ["tier-top", "Flagship"];
       if (i < 6) return ["tier-good", "High-End"];
@@ -419,19 +475,29 @@
       return ["tier-budget", "Budget"];
     }
 
-    function renderTable(tbodyId, list, tierFn, col2Header) {
+    function renderTable(tbodyId, list, tierFn, ratingFn) {
       var tbody = document.getElementById(tbodyId);
       var html = "";
       for (var i = 0; i < list.length; i++) {
         var t = tierFn(i);
+        var r = ratingFn(list[i][0]);
         html += '<tr><td>' + (i + 1) + '</td><td>' + list[i][0] + '</td><td>' + list[i][1] +
-          '</td><td>' + list[i][2] + '</td><td><span class="tier ' + t[0] + '">' + t[1] + '</span></td></tr>';
+          '</td><td>' + list[i][2] + '</td>' +
+          '<td><span class="rating-val">' + r + '</span><span class="rating-bar"><span style="width:' + r + '%"></span></span></td>' +
+          '<td><span class="tier ' + t[0] + '">' + t[1] + '</span></td></tr>';
       }
       tbody.innerHTML = html;
     }
 
-    renderTable("gpu-tbody", gpuList, gpuTier);
-    renderTable("cpu-tbody", cpuList, cpuTier);
+    // GPU rating derived from Cyberpunk 2077 1080p Ultra FPS (180 fps = 100)
+    function gpuRating(name) {
+      var f = gpuFps[name];
+      if (!f) return 0;
+      return Math.round((f[0] / 180) * 100);
+    }
+
+    renderTable("gpu-tbody", gpuList, gpuTier, gpuRating);
+    renderTable("cpu-tbody", cpuList, cpuTier, function(name) { return cpuRating[name] || 0; });
 
     // Tab switching between GPU and CPU rankings
     function showTab(tab) {
