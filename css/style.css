@@ -778,6 +778,17 @@ footer {
   opacity: 1;
 }
 
+/* Honeypot spam-protection field (hidden from humans, visible to bots) */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
 @media (max-width: 768px) {
   header .container {
     flex-direction: column;

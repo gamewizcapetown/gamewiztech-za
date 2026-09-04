@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://dev.to data:; connect-src 'self' https://dev.to; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Contact — Gamewiztech ZA</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -53,6 +55,10 @@
           <div class="form-group">
             <label for="message">Message</label>
             <textarea id="message" required></textarea>
+          </div>
+          <div class="hp-field">
+            <label for="website_confirm">Leave this field empty</label>
+            <input type="text" id="website_confirm" name="website_confirm" tabindex="-1" autocomplete="off">
           </div>
           <button type="submit" class="btn" style="width: 100%;">Send Message</button>
         </form>
@@ -108,8 +114,15 @@
       document.getElementById('message').value = 'I would like to order: ' + params.get('order') + '\nTotal: ' + params.get('total');
     }
 
-    // Form submission via Formspree (free)
+    // Form submission via Formspree (free) with spam protection
+    const formStart = Date.now();
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      const honeypot = document.getElementById('website_confirm').value;
+      // Honeypot filled = bot; submitted too fast (<3s) = likely bot
+      if (honeypot || (Date.now() - formStart) < 3000) {
+        e.preventDefault();
+        return;
+      }
       e.preventDefault();
       const data = {
         name: document.getElementById('name').value,
