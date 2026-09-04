@@ -6,7 +6,7 @@
     if (theme === 'light') body.classList.add('light');
     var btn = document.getElementById('darkToggle');
     if (btn) {
-      btn.textContent = theme === 'dark' ? '&#9728;&#65039;' : '&#127769;';
+      btn.textContent = theme === 'dark' ? "\u2600\uFE0F" : "\uD83C\uDF19";
       btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
       btn.setAttribute('title', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
     }
@@ -28,7 +28,7 @@
     var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (prefersDark) document.body.classList.add('dark');
     if (btn) {
-      btn.textContent = prefersDark ? '&#9728;&#65039;' : '&#127769;';
+      btn.textContent = prefersDark ? "\u2600\uFE0F" : "\uD83C\uDF19";
       btn.setAttribute('title', prefersDark ? 'Switch to light mode' : 'Switch to dark mode');
     }
   }
