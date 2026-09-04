@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gamewizcapetown.github.io/gamewiztech-za/sitemap.xml

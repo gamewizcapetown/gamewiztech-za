@@ -957,6 +957,28 @@ footer {
   font-size: 0.85rem;
   color: #888;
   text-align: center;
+  font-weight: 600;
+}
+
+/* SEO content block on Rankings page */
+.seo-content {
+  margin-top: 3.5rem;
+  max-width: 860px;
+  padding-top: 2rem;
+  border-top: 1px solid #e8e8ef;
+}
+.seo-content h2 {
+  font-size: 1.35rem;
+  color: #1a1a2e;
+  margin: 1.5rem 0 0.75rem;
+}
+.seo-content p {
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.seo-content strong {
+  color: #1a1a2e;
 }
 
 @media (max-width: 768px) {
