@@ -36,6 +36,7 @@
       <div class="rank-tabs">
         <button class="filter-btn active" data-tab="gpu">GPU Rankings</button>
         <button class="filter-btn" data-tab="cpu">CPU Rankings</button>
+        <button class="filter-btn" data-tab="compare">Compare</button>
       </div>
 
       <!-- GPU Rankings -->
@@ -76,6 +77,25 @@
           </table>
         </div>
         <p class="rank-note">Rankings based on gaming and productivity performance, efficiency, and value. The Xeon E5 2680 v4 in our <a href="products.html">Nexus Lite Gaming PC</a> is a powerful multi-core workstation chip from the server segment.</p>
+      </div>
+
+      <!-- Compare -->
+      <div id="tab-compare" class="rank-panel" style="display:none;">
+        <h2 class="section-title">Compare GPU vs GPU / CPU vs CPU</h2>
+        <p class="compare-intro">Pick two components of the same type to see them side by side. The better value in each row is highlighted.</p>
+        <div class="compare-controls">
+          <div class="compare-type">
+            <button class="filter-btn compare-type-btn active" data-type="gpu">Compare GPUs</button>
+            <button class="filter-btn compare-type-btn" data-type="cpu">Compare CPUs</button>
+          </div>
+          <div class="compare-selects">
+            <select id="compare-a" class="compare-select"></select>
+            <span class="compare-vs">vs</span>
+            <select id="compare-b" class="compare-select"></select>
+          </div>
+          <button class="btn" onclick="runCompare()">Compare</button>
+        </div>
+        <div id="compare-result" class="compare-result"></div>
       </div>
 
     </div>
@@ -252,14 +272,108 @@
     renderTable("cpu-tbody", cpuList, cpuTier);
 
     // Tab switching between GPU and CPU rankings
+    function showTab(tab) {
+      document.getElementById('tab-gpu').style.display = tab === 'gpu' ? 'block' : 'none';
+      document.getElementById('tab-cpu').style.display = tab === 'cpu' ? 'block' : 'none';
+      document.getElementById('tab-compare').style.display = tab === 'compare' ? 'block' : 'none';
+    }
+
     document.querySelectorAll('.rank-tabs .filter-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         document.querySelectorAll('.rank-tabs .filter-btn').forEach(function(b) { b.classList.remove('active'); });
         btn.classList.add('active');
-        document.getElementById('tab-gpu').style.display = btn.dataset.tab === 'gpu' ? 'block' : 'none';
-        document.getElementById('tab-cpu').style.display = btn.dataset.tab === 'cpu' ? 'block' : 'none';
+        showTab(btn.dataset.tab);
       });
     });
+
+    // --- Compare tool ---
+    var compareType = 'gpu';
+    var selectA = document.getElementById('compare-a');
+    var selectB = document.getElementById('compare-b');
+
+    function currentCompareList() {
+      return compareType === 'gpu' ? gpuList : cpuList;
+    }
+
+    function fillCompareSelects() {
+      var list = currentCompareList();
+      selectA.innerHTML = '';
+      selectB.innerHTML = '';
+      for (var i = 0; i < list.length; i++) {
+        selectA.innerHTML += '<option value="' + i + '">' + list[i][0] + '</option>';
+        selectB.innerHTML += '<option value="' + i + '">' + list[i][0] + '</option>';
+      }
+      if (list.length > 1) { selectB.value = 1; }
+    }
+
+    document.querySelectorAll('.compare-type-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.compare-type-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        compareType = btn.dataset.type;
+        fillCompareSelects();
+        document.getElementById('compare-result').innerHTML = '';
+      });
+    });
+
+    // Highlight the better value; add style-better class. col keys: spec2 (vram/cores), spec3 (speed)
+    function compareBetter(aVal, bVal, type) {
+      if (type === 'gpu') {
+        // VRAM: parse leading number of GB
+        var aGB = parseInt(aVal, 10);
+        var bGB = parseInt(bVal, 10);
+        if (aGB === bGB) return 'tie';
+        return aGB > bGB ? 'a' : 'b';
+      } else {
+        // CPU: compare core count from "xN / yT"
+        var aCores = parseInt(aVal.split('/')[0], 10);
+        var bCores = parseInt(bVal.split('/')[0], 10);
+        if (aCores === bCores) return 'tie';
+        return aCores > bCores ? 'a' : 'b';
+      }
+    }
+
+    function runCompare() {
+      var list = currentCompareList();
+      var ia = parseInt(selectA.value, 10);
+      var ib = parseInt(selectB.value, 10);
+      if (ia === ib) {
+        document.getElementById('compare-result').innerHTML =
+          '<p class="compare-note">Please choose two different components to compare.</p>';
+        return;
+      }
+      var a = list[ia], b = list[ib];
+      var rankA = ia + 1, rankB = ib + 1;
+      var tierFn = compareType === 'gpu' ? gpuTier : cpuTier;
+      var spec2Label = compareType === 'gpu' ? 'VRAM' : 'Cores / Threads';
+      var tierA = tierFn(ia), tierB = tierFn(ib);
+
+      var better2 = compareBetter(a[1], b[1], compareType);
+      var betterRank = rankA === rankB ? 'tie' : (rankA < rankB ? 'a' : 'b');
+      var faster = function(aV, bV) {
+        var an = parseFloat(aV.replace(/[^0-9.]/g, ''));
+        var bn = parseFloat(bV.replace(/[^0-9.]/g, ''));
+        if (an === bn) return 'tie';
+        return an > bn ? 'a' : 'b';
+      };
+      var better3 = faster(a[2], b[2]);
+
+      var cls = function(which) { return which === 'a' ? 'better-a' : (which === 'b' ? 'better-b' : ''); };
+
+      document.getElementById('compare-result').innerHTML =
+        '<div class="compare-table-wrap">' +
+        '<table class="rank-table compare-table">' +
+        '<tbody>' +
+        '<tr><th class="compare-row-label">Component</th><td class="' + cls('a') + '">' + a[0] + '</td><td class="' + cls('b') + '">' + b[0] + '</td></tr>' +
+        '<tr><th class="compare-row-label">Rank</th><td class="' + cls(betterRank) + '">#' + rankA + '</td><td class="' + cls(betterRank) + '">#' + rankB + '</td></tr>' +
+        '<tr><th class="compare-row-label">' + spec2Label + '</th><td class="' + cls(better2) + '">' + a[1] + '</td><td class="' + cls(better2) + '">' + b[1] + '</td></tr>' +
+        '<tr><th class="compare-row-label">Speed</th><td class="' + cls(better3) + '">' + a[2] + '</td><td class="' + cls(better3) + '">' + b[2] + '</td></tr>' +
+        '<tr><th class="compare-row-label">Tier</th><td><span class="tier ' + tierA[0] + '">' + tierA[1] + '</span></td><td><span class="tier ' + tierB[0] + '">' + tierB[1] + '</span></td></tr>' +
+        '</tbody></table></div>' +
+        '<p class="compare-note">Higher rank number and larger specs mean better performance. Highlighted cells mark the stronger side in each row.</p>';
+    }
+
+    fillCompareSelects();
   </script>
   <a class="email-float" href="mailto:Gamewizcapetown@gmail.com" aria-label="Email Gamewiztech ZA">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

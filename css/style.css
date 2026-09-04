@@ -855,6 +855,85 @@ footer {
   color: #e94560;
 }
 
+/* Compare tool */
+.compare-intro {
+  text-align: center;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+.compare-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+.compare-type {
+  display: flex;
+  gap: 0.8rem;
+}
+.compare-selects {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.compare-select {
+  padding: 0.6rem 0.9rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  max-width: 280px;
+  background: #fff;
+  color: #1a1a2e;
+}
+.compare-select:focus {
+  outline: none;
+  border-color: #4169E1;
+}
+.compare-vs {
+  font-weight: 800;
+  color: #e94560;
+  font-size: 1.1rem;
+}
+.compare-result {
+  min-height: 60px;
+}
+.compare-table-wrap {
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+.compare-table th,
+.compare-table td {
+  padding: 0.85rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+.compare-row-label {
+  background: #f4f5fa;
+  color: #1a1a2e;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.better-a {
+  background: #e8f6f3 !important;
+  font-weight: 700;
+}
+.better-b {
+  background: #fdeef0 !important;
+  font-weight: 700;
+}
+.compare-note {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  color: #888;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   header .container {
     flex-direction: column;
