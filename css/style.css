@@ -789,6 +789,72 @@ footer {
   overflow: hidden;
 }
 
+/* Hardware Rankings */
+.rank-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+.rank-panel h2 {
+  text-align: center;
+}
+.rank-table-wrap {
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  padding: 0.5rem 0;
+}
+.rank-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+}
+.rank-table th,
+.rank-table td {
+  padding: 0.85rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+.rank-table thead th {
+  background: #1a1a2e;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+.rank-table tbody tr:hover {
+  background: #f7f8fc;
+}
+.rank-table tbody tr td:first-child {
+  font-weight: 700;
+  color: #1a1a2e;
+  width: 50px;
+}
+.tier {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.tier-top { background: #e94560; color: #fff; }
+.tier-good { background: #0ABFAC; color: #fff; }
+.tier-mid { background: #4169E1; color: #fff; }
+.tier-budget { background: #888; color: #fff; }
+.rank-note {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+}
+.rank-note a {
+  color: #e94560;
+}
+
 @media (max-width: 768px) {
   header .container {
     flex-direction: column;
