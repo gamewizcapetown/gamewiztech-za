@@ -18,13 +18,17 @@ const CACHE_DURATION = 10 * 60 * 1000;
 
 let articles = [];
 let currentFilter = 'all';
+let lastUpdated = null;
 
 function getCache() {
   try {
     const cached = localStorage.getItem(CACHE_KEY);
     if (cached) {
       const { data, timestamp } = JSON.parse(cached);
-      if (Date.now() - timestamp < CACHE_DURATION) return data;
+      if (Date.now() - timestamp < CACHE_DURATION) {
+        lastUpdated = timestamp;
+        return data;
+      }
     }
   } catch {}
   return null;
@@ -75,9 +79,26 @@ async function fetchArticles() {
     }
   }
 
-  merged.sort(() => Math.random() - 0.5);
+  merged.sort((a, b) => new Date(b.published_timestamp) - new Date(a.published_timestamp));
   setCache(merged);
+  lastUpdated = Date.now();
   return merged;
+}
+
+function timeAgo(ts) {
+  if (!ts) return '';
+  const mins = Math.max(0, Math.floor((Date.now() - ts) / 60000));
+  if (mins < 1) return 'Updated just now';
+  if (mins < 60) return `Updated ${mins} min ago`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `Updated ${hrs} hr${hrs > 1 ? 's' : ''} ago`;
+  const days = Math.floor(hrs / 24);
+  return `Updated ${days} day${days > 1 ? 's' : ''} ago`;
+}
+
+function renderUpdated() {
+  const el = document.getElementById('newsUpdated');
+  if (el) el.textContent = timeAgo(lastUpdated);
 }
 
 function renderNews() {
@@ -128,6 +149,7 @@ async function initNews() {
       author: a.user?.name ? `By ${a.user.name}` : ''
     }));
     renderNews();
+    renderUpdated();
   } catch {
     const grid = document.getElementById('newsGrid');
     if (grid) {
@@ -139,8 +161,25 @@ async function initNews() {
 document.addEventListener('DOMContentLoaded', () => {
   initNews();
 
+  const refreshBtn = document.getElementById('newsRefresh');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => {
+      const grid = document.getElementById('newsGrid');
+      if (grid) {
+        grid.innerHTML = '<div class="news-loading">Refreshing tech news...</div>';
+      }
+      refreshBtn.classList.add('active');
+      try {
+        localStorage.removeItem(CACHE_KEY);
+      } catch {}
+      lastUpdated = null;
+      initNews().then(() => refreshBtn.classList.remove('active'));
+    });
+  }
+
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+      if (btn.id === 'newsRefresh') return;
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentFilter = btn.dataset.filter;
